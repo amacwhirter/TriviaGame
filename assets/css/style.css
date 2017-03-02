@@ -1,0 +1,31 @@
+body {
+	background-image: url("../images/");
+	text-align: center;
+    background-size: cover;
+	background-repeat: no-repeat;
+}
+
+header {
+	color: red;
+	padding-top: 20px;
+}
+
+.container {
+	width: 300px;
+    height: 600px;
+    margin: 0;
+}
+
+.question {
+    background-color: gray;
+    width: 600px;
+    height: 50%;
+    margin: auto;
+	padding: 10px;
+    overflow: scroll;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+}

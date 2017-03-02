@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Trivia Game!</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<header>
+    <h1>Crazy Canuck Trivia!</h1>
+    <h4>How much do you know aboot Canada, eh?</h4>
+</header>
+<br>
+
+<body>
+    <div id="container">
+        <div id=start>
+            <button id="play">Play, Eh?!</button>
+        </div>
+        <br>
+        <div id=timer>You have <span id="countdown">10</span> seconds!!</div>
+        <br>
+        <div id="quiz">
+            <div id="question">
+                <form>
+                    <label>What is Canada's national animal?</label>
+                    <br>
+                    <input type="radio" id="radio" name="answer1" value="beaver"> Beaver
+                    <br>
+                    <input type="radio" id="radio" name="answer1" value="moose"> Moose
+                    <br>
+                    <input type="radio" id="radio" name="answer1" value="goose"> Goose
+                    <br>
+                    <input type="radio" id="radio" name="answer1" value="polarBear"> Polar Bear
+                    <br>
+                </form>
+                <br>
+                <form>
+                    <label>What is Canada's national sport?</label>
+                    <br>
+                    <input type="radio" id="radio" name="answer2" value="rugby"> Rugby
+                    <br>
+                    <input type="radio" id="radio" name="answer2" value="curling"> Curling
+                    <br>
+                    <input type="radio" id="radio" name="answer2" value="lacrosse"> Lacrosse
+                    <br>
+                    <input type="radio" id="radio" name="answer2" value="baseball"> Baseball
+                    <br>
+                </form>
+                <br>
+                <form>
+                    <label>How many provinces does Canada have?</label>
+                    <br>
+                    <input type="radio" id="radio" name="answer3" value="12"> 12
+                    <br>
+                    <input type="radio" id="radio" name="answer3" value="10"> 10
+                    <br>
+                    <input type="radio" id="radio" name="answer3" value="24"> 24
+                    <br>
+                    <input type="radio" id="radio" name="answer3" value="18"> 18
+                    <br>
+                </form>
+                <br>
+                <form>
+                    <label>Canada is considered a bilingual country. English is one language, what is the other?</label>
+                    <br>
+                    <input type="radio" id="radio" name="answer4" value="french"> French
+                    <br>
+                    <input type="radio" id="radio" name="answer4" value="spanish"> Spanish
+                    <br>
+                    <input type="radio" id="radio" name="answer4" value="portuguese"> Portuguese
+                    <br>
+                    <input type="radio" id="radio" name="answer4" value="mandarin"> Mandarin
+                    <br>
+                </form>
+                <br>
+                <form>
+                    <label>How many oceans border Canada?</label>
+                    <br>
+                    <input type="radio" id="radio" name="answer5" value="1"> 1
+                    <br>
+                    <input type="radio" id="radio" name="answer5" value="2"> 2
+                    <br>
+                    <input type="radio" id="radio" name="answer5" value="3"> 3
+                    <br>
+                    <input type="radio" id="radio" name="answer5" value="4"> 4
+                    <br>
+                </form>
+                <br>
+                <form>
+                    <label>The name, Canada, originates from a Saint-Lawrence Iroquoian word kanata... what does it mean in Iroquoian?</label>
+                    <br>
+                    <input type="radio" id="radio" name="answer6" value="beautful"> "Beautiful"
+                    <br>
+                    <input type="radio" id="radio" name="answer6" value="wildlife"> "Wildlife"
+                    <br>
+                    <input type="radio" id="radio" name="answer6" value="coldLand"> "Cold Land"
+                    <br>
+                    <input type="radio" id="radio" name="answer6" value="village"> "Village"
+                    <br>
+                </form>
+                <br>
+            </div>
+            <button id="done">Done, Eh?</button>
+        </div>
+        <div id=results>
+            <h1>RESULTS</h1>
+                <p>Correct: <span id=correct>0</span></p>
+                <p>Incorrect: <span id=incorrect>0</span></p>
+                <p>Missed: <span id=blank>0</span></p>
+            <button id="restart">Try Again, Eh?!</button>
+        </div>
+    </div>
+    </div>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+</body>
+
+</html>
