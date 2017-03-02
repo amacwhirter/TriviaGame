@@ -1,57 +1,47 @@
 $(document).ready(function() {
 
-    //set up variables
+    //set up Global variables
+    var totalQuiz = 6,
+        answers = ["beaver", "lacrosse", "10", "french", "3", "village"],
+        data = $("input"),
+        correctAnswer = 0,
+        incorrectAnswer = 0,
+        blank = 0,
+        count = 10;
+    userGuess = [];
 
-    var answers = ["Beaver", "Lacrosse", "10", "French", "3", "Village"];
-    var data = $("input");
-    var correct = 0;
-    var incorrect = 0;
-    var blank = 0;
-    var userAnswer = [];
+    //for loop and if else statement to see how many questions correct
+    //does value of selected radio answer match one of the answers in array? true or false
 
-    //reset when start new game\\
-    var reset = function() {
-        var answers = ["Beaver", "Lacrosse", "10", "French", "3", "Village"];
-        var correct = 0;
-        var incorrect = 0;
-        var blank = 0;
-        var count = 10;
-        $("#correct").html(correct);
-        $("#incorrect").html(incorrect);
-        $("#blank").html(blank);
-        $("#countdown").html(count);
-    }
+    function scoreCount() {
+        for (var i = 0; i < data.length; i++) {
 
+            // If user selected an answer
+            if (data[i].checked) {
 
-    //Setup timer to countdown from 60 seconds total to answer all questions\\
-
-    function countdown() {
-        var count = 10;
-        var timerId = setInterval(function() {
-            count--;
-            $("#countdown").html(count);
-
-            //if user runs out of time before completing questions, alert fail, show correct answers and calculate results.\\
-
-            if (count === 0) {
-                clearInterval(timerId);
-                $("#quiz, #timer").hide("slow");
-                $("#results").show("slow");
+                // check if what the user select if equal to the array answers
+                // and add one every it's equal to the correct answer global variable.
+                if (answers.indexOf(data[i].value) !== -1) {
+                    correctAnswer++;
+                } else {
+                    incorrectAnswer++;
+                }
             }
-        }, 1000);
-    }
-
-    //for loop and if else statement to see how many questions correct\\
-    //does value of selected answer match one of the answers in array? true or false\\
-    for (var i = 0; i < answers.length; i++) {
-        if ($('input[name="radios"]:checked').val() == answers) {
-            correct++;
-        } else {
-            incorrect++;
         }
-        //console.log(correct);
-        //console.log(incorrect);
-    }
+        //check how many questions were blank by subtracting the if/else values from above from the total number of questions.
+        var totalAnswered = correctAnswer + incorrectAnswer;
+        console.log(totalAnswered);
+        if (totalAnswered !== totalQuiz) {
+            blank = totalQuiz - totalAnswered;
+        }
+
+        $('#correct').html(" " + correctAnswer);
+        $('#incorrect').html(" " + incorrectAnswer);
+        $("#blank").html(" " + blank);
+
+    } //end scoreCount
+
+    //Hide and Show events
 
     //hide quiz until click play\\
     $("#quiz, #results").hide();
@@ -60,29 +50,37 @@ $(document).ready(function() {
     $("#play").click(function() {
         $("#start").hide("slow");
         $("#quiz").show("slow");
-        countdown();
+
+        //Setup timer to countdown from 60 seconds total to answer all questions\\
+
+        var startTimer = setInterval(function() {
+            count--;
+            $("#countdown").html(count);
+
+            //if user runs out of time before completing questions, alert fail, show correct answers and calculate results.\\
+
+            if (count === 0) {
+                clearInterval(timer);
+                $("#quiz, #timer").hide("slow");
+                $("#results").show("slow");
+                scoreCount();
+            }
+        }, 1000);
 
     });
+
+    //done button sends to results page//
+
+    $("#done").click(function() {
+        $("#quiz, #timer").hide("slow");
+        $("#results").show("slow");
+        clearInterval(timer);
+        scoreCount();
+    });
+
+    //restart button refreshes page back to start screen//
+
+    $("#restart").click(function() {
+        location.reload();
+    });
 });
-
-    //pull values from radio picks\\
-    function userAnswer() {
-        var radioPick = document.getElementById("radio").value;
-        console.log(radioPick);
-    }
-    
-//done button sends to results page//
-
-$("#done").click(function() {
-    $("#quiz, #timer").hide("slow");
-    $("#results").show("slow");
-    userAnswer();
-})
-
-//restart button sends back to start screen//
-
-$("#restart").click(function() {
-    $("#start, #timer").show("slow");
-    $("#results").hide("slow");
-    userAnswer();
-})
