@@ -8,10 +8,8 @@ $(document).ready(function() {
         incorrectAnswer = 0,
         blank = 0,
         count = 10;
-    userGuess = [];
 
-    //for loop and if else statement to see how many questions correct
-    //does value of selected radio answer match one of the answers in array? true or false
+    //for loop and if else statement to see how many user selectionsa and answers match
 
     function scoreCount() {
         for (var i = 0; i < data.length; i++) {
@@ -19,8 +17,8 @@ $(document).ready(function() {
             // If user selected an answer
             if (data[i].checked) {
 
-                // check if what the user select if equal to the array answers
-                // and add one every it's equal to the correct answer global variable.
+                // check if what the user select is equal to the array answers
+
                 if (answers.indexOf(data[i].value) !== -1) {
                     correctAnswer++;
                 } else {
@@ -29,6 +27,7 @@ $(document).ready(function() {
             }
         }
         //check how many questions were blank by subtracting the if/else values from above from the total number of questions.
+        
         var totalAnswered = correctAnswer + incorrectAnswer;
         console.log(totalAnswered);
         if (totalAnswered !== totalQuiz) {
